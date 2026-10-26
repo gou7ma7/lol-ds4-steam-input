@@ -1,0 +1,20 @@
+{
+  "activePlayer": {
+    "riotId": "FixturePlayer#TEST",
+    "summonerName": "FixturePlayer",
+    "riotIdGameName": "FixturePlayer",
+    "championStats": {
+      "currentHealth": 0,
+      "maxHealth": 0,
+      "resourceType": "MANA",
+      "resourceValue": 75,
+      "resourceMax": 100
+    }
+  },
+  "events": {
+    "Events": [
+      { "EventID": 0, "EventTime": 0, "EventName": "GameStart" },
+      { "EventID": 1, "EventTime": 60, "EventName": "ChampionKill", "KillerName": "FixturePlayer#TEST", "VictimName": "FixtureOpponent", "Assisters": [] }
+    ]
+  }
+}

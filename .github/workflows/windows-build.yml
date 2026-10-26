@@ -1,0 +1,23 @@
+name: Windows build and tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        preset: [default, gentle, focus, celebration]
+        language: [zh, en]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        shell: powershell
+        run: ./rumble/scripts/build.ps1 -Preset ${{ matrix.preset }} -Language ${{ matrix.language }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LoLDamageRumble-${{ matrix.preset }}-${{ matrix.language }}-windows-x64
+          path: |
+            rumble/dist/LoLDamageRumble.exe
+            rumble/dist/test-results.json
+            rumble/dist/build-info.json

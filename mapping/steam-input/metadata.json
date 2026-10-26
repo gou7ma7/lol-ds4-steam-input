@@ -1,0 +1,22 @@
+{
+  "layoutTitle": "英雄联盟 LOL WASD和鼠标",
+  "controllerType": "controller_ps4",
+  "revision": 9,
+  "configurationScope": "desktop",
+  "steamConfigurationAppId": 413080,
+  "steamWorkshopId": "3827898683",
+  "steamShareUrl": "steam://controllerconfig/413080/3827898683",
+  "exportObservedOn": "2026-10-27",
+  "publicVdfSha256": "c7c852d9efe5cabba079be60126c7a1adaa0a79da9881627c9276ecf3a946ef8",
+  "cleaning": [
+    "removed creator SteamID",
+    "removed local autosave URL",
+    "removed old template localization"
+  ],
+  "verification": {
+    "roundTripMatches": true,
+    "functionalDataMatches": true,
+    "secondComputerImportTested": false,
+    "otherAccountLinkAccessTested": false
+  }
+}
