@@ -21,3 +21,20 @@ jobs:
             rumble/dist/LoLDamageRumble.exe
             rumble/dist/test-results.json
             rumble/dist/build-info.json
+  sleep-light:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        language: [zh, en]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and offline checks
+        shell: powershell
+        run: ./sleep-light/scripts/build.ps1 -Language ${{ matrix.language }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DS4SleepLight-${{ matrix.language }}-windows-x64
+          path: |
+            sleep-light/dist/DS4SleepLight.exe
+            sleep-light/dist/test-results.json
+            sleep-light/dist/build-info.json

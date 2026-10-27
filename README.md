@@ -1,15 +1,16 @@
-# LoL controller mapping & rumble feedback
+# LoL controller mapping, rumble & sleep light
 
 [简体中文](README.zh-CN.md) · English
 
-> **Review the source code and build the rumble program yourself. Do not directly run an `.exe` downloaded from the internet.** The build instructions below are the recommended starting point. Prebuilt files and CI artifacts are optional references, not a substitute for reviewing the code.
+> **Review the source code and build the programs yourself. Do not directly run an `.exe` downloaded from the internet.** The build instructions below are the recommended starting point. Prebuilt files and CI artifacts are optional references, not a substitute for reviewing the code.
 
-Two independent modules for League of Legends:
+Three independent modules for a Windows controller setup:
 
 - **[mapping/](mapping/README.md)**: left-hand DualShock 4 + right-hand mouse, Steam Input VDF, WASD game settings and champion-specific usage notes. It works without the rumble program.
 - **[rumble/](rumble/README.md)**: Windows USB DS4 feedback based on the local Live Client Data API. It works without this Steam layout and does not require WASD movement or Steam.
+- **[sleep-light/](sleep-light/README.md)**: turn off a USB DS4 lightbar before sleep/hibernate, restore configured blue after user resume/unlock, and keep it off during background automatic wake. No Steam or game dependency.
 
-Use either module separately, or combine both. Neither module installs or changes the other.
+Use any module separately or together. None installs or changes another.
 
 ## Review and build first
 
@@ -26,6 +27,17 @@ The script first validates all presets and runs simulated behavior tests, then c
 ```
 
 Requires Windows x64 and the .NET Framework 4.x C# compiler; no package downloads, API Key or administrator rights are needed. The rumble device implementation supports USB DS4 v2 only (`054C:09CC`).
+
+## Build sleep light independently
+
+Review [sleep light source and configuration](sleep-light/README.md#review-build-and-run), then build and run your own executable:
+
+```powershell
+powershell.exe -NoProfile -File .\sleep-light\scripts\build.ps1
+.\sleep-light\dist\DS4SleepLight.exe
+```
+
+The build runs offline checks without USB writes. [Optional current-user login autostart](sleep-light/README.md#optional-login-autostart) is a separate, reversible step. The watcher only updates lightbar/blink fields; it does not change motor output or remap buttons. [Detailed configuration and verification](sleep-light/docs/configuration.md).
 
 ## Customize feedback
 
@@ -55,11 +67,17 @@ rumble/                  Independent feedback module
   src/, scripts/, tests/ Runtime, local build and offline behavior tests
   docs/                  Configuration and feedback guides, both languages
   AGENTS.md, prompts/    Agent context and copyable prompts
+sleep-light/             Independent sleep light module
+  config/                Annotated compile-time RGB and timing settings
+  src/, scripts/, tests/ Power events, USB light-only output, build and offline tests
+  docs/, prompts/        Bilingual guidance and Agent entry points
 ```
 
 [Agent entry point](AGENTS.md) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 ## Verification and limits
+
+Sleep light offline checks cover background wake versus user resume, repeat notifications, lock/unlock and pending restoration cancellation. USB off/restore was visually confirmed by the original user with Steam and rumble running. Full S3/S4 notification timing still needs a physical sleep-cycle check on the target PC.
 
 Default timings and detection behavior are regression-tested against the previous setup. Tests use synthetic game data and simulated motor output. Real-game damage feedback was confirmed by the original user; other presets require personal feel testing. The mapping's functional data matches the exported layout, but importing it on a second computer and accessing its Steam link from another account remain unverified.
 
