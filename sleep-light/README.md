@@ -71,6 +71,8 @@ Get-Content .\sleep-light\dist\cycle-result.json
 
 Successful HID write completion does not independently confirm the visible light or full sleep-cycle behavior. For the real test, start the watcher, manually choose Windows Sleep or Hibernate, observe the light, then resume/unlock and observe its return. Do not automate suspending another person's active PC as a test.
 
+The original user confirmed a real **S3 sleep → resume/unlock → configured blue** cycle while Steam and the rumble program were running; Windows power events and the watcher log agreed. S4 and automatic S3-to-S4 handling were checked with offline/simulated notifications, not a physical S4 cycle.
+
 ## Coexistence and limits
 
 The repository's rumble reports enable only motors (`0x01`); this module enables only lightbar/blink (`0x06`). Their report fields do not replace one another. Both use shared USB handles. No integration or dependency is required between the modules.

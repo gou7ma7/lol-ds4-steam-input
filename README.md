@@ -77,7 +77,7 @@ sleep-light/             Independent sleep light module
 
 ## Verification and limits
 
-Sleep light offline checks cover background wake versus user resume, repeat notifications, lock/unlock and pending restoration cancellation. USB off/restore was visually confirmed by the original user with Steam and rumble running. Full S3/S4 notification timing still needs a physical sleep-cycle check on the target PC.
+Sleep light offline checks cover background wake versus user resume, repeat notifications, lock/unlock and pending restoration cancellation. The original user visually confirmed USB off/restore and a real S3 sleep → resume/unlock → blue restore cycle with Steam and rumble running. Windows and watcher logs agreed. S4 and the automatic S3-to-S4 sequence are covered by simulated notifications/offline checks; a physical S4 cycle remains unverified.
 
 Default timings and detection behavior are regression-tested against the previous setup. Tests use synthetic game data and simulated motor output. Real-game damage feedback was confirmed by the original user; other presets require personal feel testing. The mapping's functional data matches the exported layout, but importing it on a second computer and accessing its Steam link from another account remain unverified.
 
