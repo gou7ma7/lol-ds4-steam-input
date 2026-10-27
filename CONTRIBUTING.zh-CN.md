@@ -2,7 +2,7 @@
 
 [English](CONTRIBUTING.md)
 
-- 保持 `mapping/`、`rumble/` 和 `sleep-light/` 可独立使用；根目录只负责导航、许可证和 CI。
+- 保持 `mapping/`、`rumble/` 和 `sleep-light/` 可独立使用；根目录负责导航和许可证。
 - 同步修改中英文文档。没有实际键位变更需求时，保留原生 VDF 的绑定命令。
 - 振动定制优先修改 `rumble/config/FeedbackConfig.cs`；改变 `default` 行为时明确记录原因与变化。
 - 修改源码或配置后运行 `rumble/scripts/build.ps1`。测试使用虚构比赛数据和模拟马达输出。

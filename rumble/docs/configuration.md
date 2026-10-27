@@ -23,7 +23,7 @@ No source/config change affects an already running program. After a successful b
 - `focus`: 55%, kill/assist/multikill disabled; heavy threshold 15%, low HP 20%, low resource 15%. Other timings stay at base values.
 - `celebration`: 65%, heavy/low-HP/low-resource disabled; kill/assist/multikill unchanged.
 
-Changing a preset is a compile-time choice. `-Language auto` follows Windows UI language (Chinese for `zh`, English otherwise), while `zh`/`en` force it. To add a new preset name, update `Create`, `PresetNames`, the selection `#if`, and both scripts' `ValidateSet`; add a CI matrix entry if desired. For straightforward personal tuning, edit an existing preset.
+Changing a preset is a compile-time choice. `-Language auto` follows Windows UI language (Chinese for `zh`, English otherwise), while `zh`/`en` force it. To add a new preset name, update `Create`, `PresetNames`, the selection `#if`, and both scripts' `ValidateSet`. For straightforward personal tuning, edit an existing preset.
 
 ## Intensity
 

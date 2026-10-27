@@ -23,7 +23,7 @@ powershell.exe -NoProfile -File .\scripts\build.ps1 -Preset default -Language au
 - `focus`：55%，关闭击杀/助攻/连杀；重击门槛 15%、低血量 20%、低资源 15%，其他节奏沿用基础配置。
 - `celebration`：65%，关闭重击/低血量/低资源，保留击杀/助攻/连杀。
 
-通过编译选择预设。语言 `auto` 随 Windows 界面语言选择中文或英文，`zh/en` 强制指定。增加新预设名称需要同时修改 `Create`、`PresetNames`、选择预设的 `#if` 和两个脚本的 `ValidateSet`；需要时加入 CI 矩阵。普通个人定制直接编辑现有预设最方便。
+通过编译选择预设。语言 `auto` 随 Windows 界面语言选择中文或英文，`zh/en` 强制指定。增加新预设名称需要同时修改 `Create`、`PresetNames`、选择预设的 `#if` 和两个脚本的 `ValidateSet`。普通个人定制直接编辑现有预设最方便。
 
 ## 总强度
 

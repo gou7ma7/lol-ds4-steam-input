@@ -2,7 +2,7 @@
 
 [简体中文](CONTRIBUTING.zh-CN.md)
 
-- Keep `mapping/`, `rumble/` and `sleep-light/` independently usable; shared root files are navigation, license and CI only.
+- Keep `mapping/`, `rumble/` and `sleep-light/` independently usable; shared root files provide navigation and licensing.
 - Update paired English/Chinese documentation together. Keep native VDF binding commands stable unless an actual mapping change is requested.
 - Prefer feedback customization in `rumble/config/FeedbackConfig.cs`. Preserve `default` unless its behavior change is intentional and documented.
 - Run `rumble/scripts/build.ps1` after code/config edits. Tests must use synthetic data and simulated motor output.

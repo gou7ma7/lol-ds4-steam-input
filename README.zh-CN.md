@@ -2,7 +2,7 @@
 
 简体中文 · [English](README.md)
 
-> **强烈建议先检查源码，再自行编译程序。不要直接运行网上下载的 `.exe`。** 请优先使用下面的本地构建方式；预编译文件和 CI 产物只能作为参考，不能代替源码检查。
+> **强烈建议先检查源码，再自行编译程序。不要直接运行网上下载的 `.exe`。** 请优先使用下面的本地构建方式；预编译文件只能作为参考，不能代替源码检查。
 
 仓库包含三个独立模块：
 
@@ -13,6 +13,8 @@
 可以任选一个，也可以组合使用，模块不会安装或修改对方。
 
 ## 先检查，再编译
+
+使用仓库自带脚本在本地编译和验证。目前不配置 GitHub Actions 自动工作流。
 
 请阅读 [运行源码](rumble/src/LoLDamageRumble.cs)、[详细配置](rumble/config/FeedbackConfig.cs)、[构建脚本](rumble/scripts/build.ps1) 和 [测试](rumble/tests/LoLRumbleTests.cs)。确认后，在 Windows PowerShell 中从仓库根目录运行：
 

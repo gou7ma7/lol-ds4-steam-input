@@ -2,7 +2,7 @@
 
 [简体中文](README.zh-CN.md) · English
 
-> **Review the source code and build the programs yourself. Do not directly run an `.exe` downloaded from the internet.** The build instructions below are the recommended starting point. Prebuilt files and CI artifacts are optional references, not a substitute for reviewing the code.
+> **Review the source code and build the programs yourself. Do not directly run an `.exe` downloaded from the internet.** The build instructions below are the recommended starting point. Prebuilt files are optional references, not a substitute for reviewing the code.
 
 Three independent modules for a Windows controller setup:
 
@@ -13,6 +13,8 @@ Three independent modules for a Windows controller setup:
 Use any module separately or together. None installs or changes another.
 
 ## Review and build first
+
+Build verification runs locally using the included scripts. This repository currently has no GitHub Actions workflow.
 
 Inspect [runtime source](rumble/src/LoLDamageRumble.cs), [annotated configuration](rumble/config/FeedbackConfig.cs), [build script](rumble/scripts/build.ps1) and [tests](rumble/tests/LoLRumbleTests.cs). Then, from the repository root in Windows PowerShell:
 
