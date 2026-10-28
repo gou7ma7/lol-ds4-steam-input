@@ -14,7 +14,9 @@ Use any module separately or together. None installs or changes another.
 
 ## Review and build first
 
-Build verification runs locally using the included scripts. This repository currently has no GitHub Actions workflow.
+Use the included scripts to review and build locally. GitHub Actions also runs the same build and offline checks on Windows for all four rumble presets in Chinese and English, plus both sleep light languages (10 build variants).
+
+Successful runs provide executables, test reports and build manifests under **Actions → Windows build and tests → the selected run → Artifacts**, retained for 7 days. These are build references; reviewing the source and building yourself remains recommended. The workflow does not publish Releases, install or start the tools, or access a controller.
 
 Inspect [runtime source](rumble/src/LoLDamageRumble.cs), [annotated configuration](rumble/config/FeedbackConfig.cs), [build script](rumble/scripts/build.ps1) and [tests](rumble/tests/LoLRumbleTests.cs). Then, from the repository root in Windows PowerShell:
 

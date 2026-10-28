@@ -14,7 +14,9 @@
 
 ## 先检查，再编译
 
-使用仓库自带脚本在本地编译和验证。目前不配置 GitHub Actions 自动工作流。
+建议使用仓库自带脚本，在检查源码后本地编译。GitHub Actions 也会在 Windows 上运行相同的编译和离线检查：振动工具的四种预设各编译中英文，灭灯工具编译中英文，共 10 个构建版本。
+
+成功运行后，可在 **Actions → Windows build and tests → 对应运行记录 → Artifacts** 找到程序、测试报告和构建清单，保留 7 天。这些仅供构建参考，仍建议检查源码后自行编译。工作流不会发布 Releases、安装或启动工具，也不会访问手柄。
 
 请阅读 [运行源码](rumble/src/LoLDamageRumble.cs)、[详细配置](rumble/config/FeedbackConfig.cs)、[构建脚本](rumble/scripts/build.ps1) 和 [测试](rumble/tests/LoLRumbleTests.cs)。确认后，在 Windows PowerShell 中从仓库根目录运行：
 
