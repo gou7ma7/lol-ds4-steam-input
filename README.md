@@ -16,7 +16,9 @@ Use any module separately or together. None installs or changes another.
 
 Use the included scripts to review and build locally. GitHub Actions also runs the same build and offline checks on Windows for all four rumble presets in Chinese and English, plus both sleep light languages (10 build variants).
 
-Successful runs provide executables, test reports and build manifests under **Actions → Windows build and tests → the selected run → Artifacts**, retained for 7 days. These are build references; reviewing the source and building yourself remains recommended. The workflow does not publish Releases, install or start the tools, or access a controller.
+Successful runs provide executables, test reports and build manifests under **Actions → Windows build and tests → the selected run → Artifacts**, retained for 7 days. This artifact setting does not change the repository's retention policy for run records, checks or logs. These are build references; reviewing the source and building yourself remains recommended. The workflow does not publish Releases, install or start the tools, or access a controller.
+
+Versioned downloads are available under **[Releases](../../releases)**, with bilingual release notes, source, prebuilt references, test reports and SHA-256 checksums. Release attachments are separate copies and do not expire with temporary Actions artifacts. Publishing a release is a separate step after build verification; ordinary pushes only run CI.
 
 Inspect [runtime source](rumble/src/LoLDamageRumble.cs), [annotated configuration](rumble/config/FeedbackConfig.cs), [build script](rumble/scripts/build.ps1) and [tests](rumble/tests/LoLRumbleTests.cs). Then, from the repository root in Windows PowerShell:
 
