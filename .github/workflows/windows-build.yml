@@ -14,11 +14,13 @@ jobs:
         preset: [default, gentle, focus, celebration]
         language: [zh, en]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, Node.js 24
+        with:
+          persist-credentials: false
       - name: Build and offline checks
         shell: powershell
         run: ./rumble/scripts/build.ps1 -Preset ${{ matrix.preset }} -Language ${{ matrix.language }}
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2, Node.js 24
         with:
           name: LoLDamageRumble-${{ matrix.preset }}-${{ matrix.language }}-windows-x64
           retention-days: 7
@@ -35,11 +37,13 @@ jobs:
       matrix:
         language: [zh, en]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, Node.js 24
+        with:
+          persist-credentials: false
       - name: Build and offline checks
         shell: powershell
         run: ./sleep-light/scripts/build.ps1 -Language ${{ matrix.language }}
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2, Node.js 24
         with:
           name: DS4SleepLight-${{ matrix.language }}-windows-x64
           retention-days: 7
