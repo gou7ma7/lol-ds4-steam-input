@@ -4,6 +4,9 @@
 
 > **强烈建议先检查源码，再自行编译程序。不要直接运行网上下载的 `.exe`。** 请优先使用下面的本地构建方式；预编译文件只能作为参考，不能代替源码检查。
 
+> [!IMPORTANT]
+> **使用这套 Steam Input 映射，必须以管理员身份启动 Steam。** 先完全退出 Steam（包括托盘进程），再右键 Steam → **以管理员身份运行**，确认 Windows 提示。否则可能出现布局已加载，但进入英雄联盟后无法移动或施放技能的情况。详见 [必做启动步骤](mapping/docs/setup.zh-CN.md)。独立的振动和灭灯工具不需要管理员权限。
+
 仓库包含三个独立模块：
 
 - **[mapping/ 按键映射](mapping/README.zh-CN.md)**：左手 DS4、右手鼠标，包含 Steam 原生 VDF、游戏 WASD 设置和英雄使用备注。不需要振动程序。
@@ -32,7 +35,9 @@ powershell.exe -NoProfile -File .\rumble\scripts\build.ps1
 .\rumble\dist\LoLDamageRumble.exe
 ```
 
-需要 Windows x64 和 .NET Framework 4.x 的 C# 编译器，不下载依赖，不要求 API Key 或管理员权限。振动实现目前只支持 USB DS4 第二代（`054C:09CC`）。
+振动程序的编译和运行需要 Windows x64 和 .NET Framework 4.x 的 C# 编译器；这个模块不下载依赖，不要求 API Key 或管理员权限。振动实现目前只支持 USB DS4 第二代（`054C:09CC`）。
+
+两个程序均包含原创应用和托盘图标：振动工具为紫色手柄与脉冲，灭灯工具为蓝色手柄与月亮。各模块的 `assets/` 保存可编辑 SVG 和多尺寸 ICO；构建时嵌入 ICO，并在 `build-info.json` 中记录图标的 SHA-256。运行 EXE 无需额外图标文件。
 
 ## 独立编译睡眠灭灯工具
 

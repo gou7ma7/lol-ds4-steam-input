@@ -2,6 +2,9 @@
 
 # Steam Input 原生布局
 
+> [!IMPORTANT]
+> **在 LoL 中使用这套桌面布局，必须以管理员身份启动 Steam。** 先完全退出 Steam，再选择 **以管理员身份运行**。详见 [启动说明](../docs/setup.zh-CN.md)。
+
 ## 文件与来源
 
 `lol-left-hand-ds4.vdf` 是 **UTF-8 的 Valve KeyValues 文本**，根节点为 `controller_mappings`。不是 JSON，也不是游戏开发者使用的 `game_actions_<appid>.vdf` 动作清单。

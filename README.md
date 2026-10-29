@@ -4,6 +4,9 @@
 
 > **Review the source code and build the programs yourself. Do not directly run an `.exe` downloaded from the internet.** The build instructions below are the recommended starting point. Prebuilt files are optional references, not a substitute for reviewing the code.
 
+> [!IMPORTANT]
+> **Steam Input mapping requires Steam to be started as administrator for this setup.** Completely exit Steam, including its tray process, then right-click Steam → **Run as administrator** and approve the Windows prompt. Otherwise, the layout may load but fail to move or cast skills inside LoL. See the [required startup steps](mapping/docs/setup.md). The independent rumble and sleep light tools do not require elevation.
+
 Three independent modules for a Windows controller setup:
 
 - **[mapping/](mapping/README.md)**: left-hand DualShock 4 + right-hand mouse, Steam Input VDF, WASD game settings and champion-specific usage notes. It works without the rumble program.
@@ -32,7 +35,9 @@ The script first validates all presets and runs simulated behavior tests, then c
 .\rumble\dist\LoLDamageRumble.exe
 ```
 
-Requires Windows x64 and the .NET Framework 4.x C# compiler; no package downloads, API Key or administrator rights are needed. The rumble device implementation supports USB DS4 v2 only (`054C:09CC`).
+Building and running the rumble program requires Windows x64 and the .NET Framework 4.x C# compiler; no package downloads, API Key or administrator rights are needed for this module. The rumble device implementation supports USB DS4 v2 only (`054C:09CC`).
+
+Both programs include original application and tray icons: a purple controller/pulse for rumble, and a blue controller/moon for sleep light. Each module's `assets/` contains the editable SVG and multi-size ICO; its build embeds the ICO and records its SHA-256 in `build-info.json`. No external icon file is needed to run either executable.
 
 ## Build sleep light independently
 
@@ -69,11 +74,13 @@ mapping/                 Independent key-mapping module
   docs/                  Setup and champion/interaction notes, both languages
   AGENTS.md, prompts/    Agent context and copyable prompts
 rumble/                  Independent feedback module
+  assets/                Original editable SVG and embedded Windows ICO
   config/                Editable presets and detailed parameter comments
   src/, scripts/, tests/ Runtime, local build and offline behavior tests
   docs/                  Configuration and feedback guides, both languages
   AGENTS.md, prompts/    Agent context and copyable prompts
 sleep-light/             Independent sleep light module
+  assets/                Original editable SVG and embedded Windows ICO
   config/                Annotated compile-time RGB and timing settings
   src/, scripts/, tests/ Power events, USB light-only output, build and offline tests
   docs/, prompts/        Bilingual guidance and Agent entry points

@@ -32,6 +32,8 @@ Requires Windows x64 and the .NET Framework 4.x C# compiler. No downloaded packa
 
 The folder is standalone: after copying `sleep-light/` elsewhere, run `scripts/build.ps1` there. `-Language auto` uses the Windows UI language; `zh` and `en` force Chinese or English. Stop a running watcher before rebuilding its executable.
 
+The executable and tray use an embedded original controller/moon icon. [Editable SVG and multi-size ICO](assets/README.md) are included in this module; the build records the icon SHA-256 in `build-info.json`. No separate icon file is needed at runtime.
+
 ## Optional login autostart
 
 After reviewing and building your own executable:

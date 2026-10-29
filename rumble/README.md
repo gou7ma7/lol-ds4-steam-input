@@ -22,6 +22,8 @@ Requires the Windows .NET Framework 4.x x64 C# compiler. The script validates ev
 
 This folder can be copied and built on its own. Generated files in `dist/` are excluded from source commits.
 
+The executable and tray use an embedded original controller/pulse icon. [Editable SVG and multi-size ICO](assets/README.md) are included in this module; the build records the icon SHA-256 in `build-info.json`. No separate icon file is needed at runtime.
+
 ## Presets and editing
 
 **[config/FeedbackConfig.cs](config/FeedbackConfig.cs)** is the compile-time configuration, with detailed bilingual comments. Edit parameters and rebuild; nothing needs to be edited in the runtime for normal tuning.

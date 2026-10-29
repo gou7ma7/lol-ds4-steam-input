@@ -22,6 +22,8 @@ powershell.exe -NoProfile -File .\scripts\build.ps1
 
 本文件夹可以单独复制和构建，`dist/` 生成文件不提交到源码仓库。
 
+程序和托盘使用内嵌的原创手柄与脉冲图标。本模块包含 [可编辑 SVG 和多尺寸 ICO](assets/README.md)；构建时在 `build-info.json` 中记录图标 SHA-256，运行时无需单独图标文件。
+
 ## 预设与定制
 
 **[config/FeedbackConfig.cs](config/FeedbackConfig.cs)** 是编译时配置，带详细中英文注释。正常调节只改配置再编译，不需要修改业务逻辑。

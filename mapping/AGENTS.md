@@ -5,6 +5,7 @@
 - Source of truth for physical outputs: `steam-input/lol-left-hand-ds4.vdf` and its active preset/group links.
 - Source of truth for final actions: setup docs and `game-settings/wasd-keybinds.reference.json`.
 - Core use: left-hand DS4 + right-hand mouse; L2 outputs E for Q, L1 outputs Left Shift for W, mouse right performs E, L3 outputs R for R.
+- Required startup for this setup: completely exit Steam, then run Steam as administrator before applying/using the layout in LoL. Keep this prominent in both languages; do not extend elevation to the independent rumble/sleep-light tools. 本方案使用前须完全退出 Steam，再以管理员身份启动；保留醒目双语提示。
 - Do not confuse skill slot Q/W/E/R with the keyboard letter Steam emits.
 - D-pad down currently emits 3. Sustained-R use needs a per-champion game R binding to 3; it is a note, not automatic switching.
 - Passive E/high-frequency Q/W substitutions and Ctrl+left-click portal interaction are usage notes only.

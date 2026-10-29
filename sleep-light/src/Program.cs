@@ -42,6 +42,7 @@ namespace DS4SleepLight {
     internal sealed class LightApp : Form {
         private readonly SleepPolicy policy = new SleepPolicy(SleepLightConfig.RestoreOnResume);
         private readonly NotifyIcon tray = new NotifyIcon();
+        private readonly Icon appIcon = Icon.ExtractAssociatedIcon(Application.ExecutablePath) ?? (Icon)SystemIcons.Application.Clone();
         private readonly System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         private readonly Stopwatch clock = Stopwatch.StartNew();
         private readonly ToolStripMenuItem status;
@@ -59,7 +60,7 @@ namespace DS4SleepLight {
             diagnostic.Click += delegate { WriteResult result = NativeHid.Diagnose(); Log.Write("diagnose", result); SetStatus(result.Outcome == "output_accessible_no_write" ? Ui.Text("支持的手柄可写入", "Supported controller accessible") : FailureText(result)); };
             menu.Items.Add(diagnostic);
             ToolStripMenuItem exit = new ToolStripMenuItem(Ui.Text("退出", "Exit")); exit.Click += delegate { Close(); }; menu.Items.Add(exit);
-            tray.Icon = SystemIcons.Application; tray.ContextMenuStrip = menu; tray.Visible = true;
+            tray.Icon = appIcon; tray.ContextMenuStrip = menu; tray.Visible = true;
             SetStatus(status.Text);
             timer.Interval = 100; timer.Tick += delegate { RestoreTick(); }; timer.Start();
             SystemEvents.SessionSwitch += SessionChanged;
@@ -115,7 +116,7 @@ namespace DS4SleepLight {
         private void SetStatus(string text) { status.Text = text; string tooltip = "DS4SleepLight: " + text; tray.Text = tooltip.Length > 63 ? tooltip.Substring(0, 63) : tooltip; }
         protected override void OnFormClosing(FormClosingEventArgs e) {
             ending = true; timer.Stop(); SystemEvents.SessionSwitch -= SessionChanged;
-            tray.Visible = false; tray.Dispose(); timer.Dispose();
+            tray.Visible = false; tray.Dispose(); appIcon.Dispose(); timer.Dispose();
             Log.Write("watcher_stopped_no_light_write", null); base.OnFormClosing(e);
         }
     }

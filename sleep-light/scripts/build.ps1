@@ -18,9 +18,10 @@ if ($LASTEXITCODE -ne 0) { throw "Offline test compilation failed ($LASTEXITCODE
 & $runner (Join-Path $OutputDirectory 'test-results.json')
 if ($LASTEXITCODE -ne 0) { throw "Offline checks failed ($LASTEXITCODE)." }
 $executable = Join-Path $OutputDirectory 'DS4SleepLight.exe'
-& $compiler /nologo /target:winexe /platform:x64 /main:DS4SleepLight.Program "/out:$executable" @references @defines @sources
+$icon = Join-Path $moduleRoot 'assets\app.ico'
+& $compiler /nologo /target:winexe /platform:x64 /main:DS4SleepLight.Program "/out:$executable" "/win32icon:$icon" @references @defines @sources
 if ($LASTEXITCODE -ne 0) { throw "Application compilation failed ($LASTEXITCODE)." }
 $hashes = [ordered]@{}
 foreach ($source in $sources) { $hashes[$source.Substring($moduleRoot.Length + 1).Replace('\','/')] = (Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLowerInvariant() }
-[ordered]@{version=1;language=$Language;executableSha256=(Get-FileHash -LiteralPath $executable -Algorithm SHA256).Hash.ToLowerInvariant();sources=$hashes} | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $OutputDirectory 'build-info.json') -Encoding UTF8
+[ordered]@{version=1;language=$Language;executableSha256=(Get-FileHash -LiteralPath $executable -Algorithm SHA256).Hash.ToLowerInvariant();iconSha256=(Get-FileHash -LiteralPath $icon -Algorithm SHA256).Hash.ToLowerInvariant();sources=$hashes} | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $OutputDirectory 'build-info.json') -Encoding UTF8
 Write-Output "Built: $executable (language=$Language). Build did not start the watcher or send USB commands."

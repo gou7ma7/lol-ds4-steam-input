@@ -4,6 +4,20 @@
 
 The chain is **physical controller → Steam keyboard output → LoL WASD action**. Q/W/E/R in the control description mean the champion's skill slots, not necessarily keyboard letters.
 
+## Required: start Steam as administrator
+
+> [!IMPORTANT]
+> **Start Steam with Run as administrator before applying and using this desktop mapping in LoL.** The original user confirmed that a normal Steam instance could not control the game with this layout. Treat elevation as a required setup step.
+
+1. Save your work in Steam and completely exit it using **Steam → Exit** or its tray menu. Closing only the window can leave Steam running.
+2. Right-click your Steam shortcut or `steam.exe` → **Run as administrator**, then approve the Windows prompt. Opening a second shortcut while a normal Steam instance is still running does not reliably restart it with administrator rights.
+3. Connect the controller, apply the desktop layout and configure LoL's WASD bindings below.
+4. Enter practice mode and verify movement and skills while LoL is focused. If the layout works on the desktop but not in the game, first check that the active Steam instance was started as administrator.
+
+Windows restricts input injection across process integrity levels; Microsoft's [SendInput documentation](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-sendinput) describes this UIPI restriction. It is consistent with the reported symptom; the requirement above comes from this setup's observed behavior, not a claim that every LoL installation needs elevation. Keep this permission check separate from the VDF and game key bindings.
+
+This step applies to Steam's input mapping. Building/running the independent rumble and sleep light programs does not require administrator rights. No script in this repository elevates Steam or changes Windows permission settings.
+
 ## Core left-hand controls
 
 - Left stick up/down/left/right → W/S/A/D → movement.

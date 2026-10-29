@@ -295,6 +295,7 @@ namespace LoLDamageRumble {
 
     internal sealed class RumbleApp : Form {
         private readonly NotifyIcon tray=new NotifyIcon();
+        private readonly Icon appIcon=Icon.ExtractAssociatedIcon(Application.ExecutablePath) ?? (Icon)SystemIcons.Application.Clone();
         private readonly System.Windows.Forms.Timer timer=new System.Windows.Forms.Timer();
         private readonly ToolStripMenuItem toggle=new ToolStripMenuItem(Ui.Text("暂停全部反馈","Pause all feedback"));
         private readonly ToolStripMenuItem status=new ToolStripMenuItem(Ui.Text("等待比赛数据","Waiting for match data"));
@@ -343,7 +344,7 @@ namespace LoLDamageRumble {
                 level.Click+=delegate { intensity=value; foreach(ToolStripMenuItem item in levels.DropDownItems) item.Checked=item==level; }; levels.DropDownItems.Add(level);
             }
             menu.Items.Add(levels); ToolStripMenuItem exit=new ToolStripMenuItem(Ui.Text("退出并停止振动","Exit and stop vibration")); exit.Click+=delegate { Close(); }; menu.Items.Add(exit);
-            tray.Icon=SystemIcons.Application; tray.Text=Ui.Text("LoL 手柄反馈：等待比赛","LoL rumble: waiting for match"); tray.ContextMenuStrip=menu; tray.Visible=true;
+            tray.Icon=appIcon; tray.Text=Ui.Text("LoL 手柄反馈：等待比赛","LoL rumble: waiting for match"); tray.ContextMenuStrip=menu; tray.Visible=true;
             timer.Interval=FeedbackConfig.Current.Polling.MotorTimerMs; timer.Tick+=delegate {
                 try { scheduler.Tick(clock.Elapsed.TotalSeconds); } catch(IOException) { ControllerFailure(); }
                 if(statusFile!=null && clock.Elapsed.TotalSeconds>=nextStatus) { nextStatus=clock.Elapsed.TotalSeconds+FeedbackConfig.Current.Polling.StatusIntervalSeconds; WriteStatus(true); }
@@ -424,7 +425,7 @@ namespace LoLDamageRumble {
         }
         protected override void OnFormClosing(FormClosingEventArgs e) {
             ending=true; Interlocked.Increment(ref reset); timer.Stop(); CancelFeedback(); CloseController(); WriteStatus(false);
-            SystemEvents.SessionSwitch-=SessionChanged; tray.Visible=false; tray.Dispose(); timer.Dispose(); base.OnFormClosing(e);
+            SystemEvents.SessionSwitch-=SessionChanged; tray.Visible=false; tray.Dispose(); appIcon.Dispose(); timer.Dispose(); base.OnFormClosing(e);
         }
     }
 

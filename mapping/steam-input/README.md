@@ -2,6 +2,9 @@
 
 [简体中文](README.zh-CN.md)
 
+> [!IMPORTANT]
+> **Using this desktop layout in LoL requires Steam to be started as administrator for this setup.** Completely exit Steam first, then use **Run as administrator**. See [startup instructions](../docs/setup.md).
+
 `lol-left-hand-ds4.vdf` is **UTF-8 Valve KeyValues text**, rooted at `controller_mappings`. It is not JSON or a developer's `game_actions_<appid>.vdf` action manifest.
 
 Title: 英雄联盟 LOL WASD和鼠标. Original description: hold the controller in the left hand, use triggers + L3 for skills; hold the mouse in the right hand, use side buttons for items.

@@ -32,6 +32,8 @@ powershell.exe -NoProfile -File .\sleep-light\scripts\build.ps1
 
 整个 `sleep-light/` 文件夹可以单独复制使用，在该文件夹运行 `scripts/build.ps1` 即可。默认 `-Language auto` 跟随 Windows 界面语言；`zh`、`en` 强制中英文。重新编译正在运行的程序前，先退出该工具。
 
+程序和托盘使用内嵌的原创手柄与月亮图标。本模块包含 [可编辑 SVG 和多尺寸 ICO](assets/README.md)；构建时在 `build-info.json` 中记录图标 SHA-256，运行时无需单独图标文件。
+
 ## 可选：登录自启动
 
 检查源码并自行编译后：

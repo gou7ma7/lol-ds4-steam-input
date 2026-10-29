@@ -4,6 +4,9 @@
 
 This module is independently usable. It contains a native Steam Input layout and the LoL WASD settings needed to turn controller outputs into skill actions. No feedback application is required.
 
+> [!IMPORTANT]
+> **Required: start Steam as administrator before using this mapping in LoL.** Completely exit the existing Steam instance, then right-click Steam → **Run as administrator** and approve the Windows prompt. A normal Steam instance may apply the layout on the desktop but have no permission to control LoL. Follow the [startup and troubleshooting steps](docs/setup.md). This requirement applies to Steam mapping; the independent feedback tools do not need administrator rights.
+
 ## Controls
 
 - Left stick: WASD movement.
@@ -16,10 +19,11 @@ Only the controller's left half is used. The right hand uses a real mouse for ai
 
 ## Apply manually
 
-1. Connect a DS4 and enable its Steam Input support.
-2. Open `steam://controllerconfig/413080/3827898683` in Steam, preview the layout and apply it to the desktop configuration. Name: 英雄联盟 LOL WASD和鼠标.
-3. Enable LoL's WASD mode and assign Q→E, W→Left Shift, E→Mouse right, R→R in that mode's settings.
-4. Test movement and skill use in practice mode before normal play.
+1. Completely exit Steam, then start it with **Run as administrator**.
+2. Connect a DS4 and enable its Steam Input support.
+3. Open `steam://controllerconfig/413080/3827898683` in Steam, preview the layout and apply it to the desktop configuration. Name: 英雄联盟 LOL WASD和鼠标.
+4. Enable LoL's WASD mode and assign Q→E, W→Left Shift, E→Mouse right, R→R in that mode's settings.
+5. Test movement and skill use in practice mode before normal play.
 
 413080 identifies Steam's desktop layout, not LoL. Save your previous desktop layout first if you want to return to it. The Steam link was confirmed in the original user's local export/load record; access from other accounts is unverified. If unavailable, rebuild the core controls using the setup guide. Downloading or double-clicking a VDF does not automatically import it.
 
